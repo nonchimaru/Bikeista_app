@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\CarModels;
+use App\Models\CarModel;
 use Illuminate\Http\Request;
 
-class CarModelsController extends Controller
+class CarModelController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -13,7 +13,7 @@ class CarModelsController extends Controller
     public function index()
     {
         // バイク車種を取得してJSON形式で返す
-        $carModels = carModels::all();
+        $carModels = carModel::all();
         return response()->json([
             'status' => true,
             'carModels' => $carModels
@@ -39,7 +39,7 @@ class CarModelsController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(CarModels $carModels)
+    public function show(CarModel $carModels)
     {
         //
     }
@@ -47,7 +47,7 @@ class CarModelsController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(CarModels $carModels)
+    public function edit(CarModel $carModels)
     {
         //
     }
@@ -55,7 +55,7 @@ class CarModelsController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, CarModels $carModels)
+    public function update(Request $request, CarModel $carModels)
     {
         //
     }
@@ -63,7 +63,7 @@ class CarModelsController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(CarModels $carModels)
+    public function destroy(CarModel $carModels)
     {
         //
     }
