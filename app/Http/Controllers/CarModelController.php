@@ -12,12 +12,10 @@ class CarModelController extends Controller
      */
     public function index()
     {
-        // バイク車種を取得してJSON形式で返す
-        $carModels = carModel::all();
-        return response()->json([
-            'status' => true,
-            'carModels' => $carModels
-        ]);
+    // バイク車種を取得
+    $carModels = carModel::all();
+    // コントローラでwithを使う
+    CarModel::with('manufacture:id,name')->get(['name','id']);
     }
 
     /**

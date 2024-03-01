@@ -8,4 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class Manufacture extends Model
 {
     use HasFactory;
+
+public function manufacture()
+{
+    return $this->belongsTo(Manufacture::class, 'manufacture_id');
+}
 }
