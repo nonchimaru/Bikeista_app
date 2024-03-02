@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\CarModel;
 use Illuminate\Http\Request;
+use App\Models\Manufacture;
 
 class CarModelController extends Controller
 {
@@ -12,10 +13,11 @@ class CarModelController extends Controller
      */
     public function index()
     {
-    // バイク車種を取得
-    $carModels = carModel::all();
-    // コントローラでwithを使う
-    CarModel::with('manufacture:id,name')->get(['name','id']);
+        $carModels = Manufacture::with('cars:manufacture_id,car_model')->get(['id', 'name']);
+
+        return response()->json([
+            'carModels' => $carModels
+        ], 200);
     }
 
     /**
