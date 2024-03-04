@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\CarModel;
 use Illuminate\Http\Request;
-use App\Models\Manufacture;
+use Illuminate\Support\Facades\DB;
 
 class CarModelController extends Controller
 {
@@ -13,13 +13,15 @@ class CarModelController extends Controller
      */
     public function index()
     {
-        $carModels = Manufacture::with('cars:manufacture_id,car_model')->get(['id', 'name']);
+        $carModels = DB::table('car_models')
+            ->select('car_models.id', 'car_models.car_model', 'manufactures.name as manufacture')
+            ->join('manufactures', 'car_models.manufacture_id', '=', 'manufactures.id')
+            ->get();
 
         return response()->json([
-            'carModels' => $carModels
+            'data' => $carModels
         ], 200);
     }
-
     /**
      * Show the form for creating a new resource.
      */
