@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Api; // apiフォルダにあるため末尾を"Api"に
+namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use App\Models\User;
