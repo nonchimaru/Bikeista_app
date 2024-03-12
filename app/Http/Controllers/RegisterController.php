@@ -13,7 +13,7 @@ class RegisterController extends Controller
 {
     public function register(Request $request)
     {
-        // バリデーション
+        // バリデーション 
         $validator = Validator::make($request->all(), [
             // 名前のバリデーションルールはここに追加する必要がある
             // 'name' => ['required', 'max:20'],
