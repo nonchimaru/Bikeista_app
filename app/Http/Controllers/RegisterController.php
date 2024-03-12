@@ -15,11 +15,14 @@ class RegisterController extends Controller
     {
         // バリデーション
         $validator = Validator::make($request->all(), [
-            'name' => ['required'],
-            'email' => ['required', 'email'],
+            // 名前のバリデーションルールはここに追加する必要がある
+            // 'name' => ['required', 'max:20'],
+            'name' => ['required','max:20'],
+            'email' => ['required', 'email','unique:users'],
             'password' => ['required']
         ]);
 
+        // バリデーションエラーが発生した場合はエラーメッセージを返す
         if ($validator->fails()) {
             return response()->json($validator->messages(), Response::HTTP_UNPROCESSABLE_ENTITY);
         }
